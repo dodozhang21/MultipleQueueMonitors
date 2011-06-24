@@ -1,0 +1,14 @@
+Goal:
+Run two threads, if either one fails, kill the main thread.
+
+Simple example:
+	Developer Sid - https://github.com/developerSid/ThreadDoer - run Main.java for a simple example
+
+Queue monitoring example:
+ Lib:
+	- Spring JMS
+	- ActiveMQ (embeded so you don't have to install ActiveMQ at all)
+
+	The two threads are basically two queue monitors. The queue monitors are in while true loops but will die as soon as a certain condition fails. In this case if it gets a message that is not equal to "Yes".
+		Run PutMessagesOnQueue.java to put simple text messages in the queues
+		Run MainWithSpring.java to see the queue monitors in action
