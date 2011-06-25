@@ -12,3 +12,35 @@ Queue monitoring example:
 	The two threads are basically two queue monitors. The queue monitors are in while true loops but will die as soon as a certain condition fails. In this case if it gets a message that is not equal to "Yes".
 		Run PutMessagesOnQueue.java to put simple text messages in the queues
 		Run MainWithSpring.java to see the queue monitors in action
+		
+		
+If running this in Eclipse
+	Install m2eclipse plugin if you have not
+	Import -> Maven -> Existing Maven Projects
+	Select the MultipleQueueMonitors folder
+	Add src, resources, properties as source folders
+	Change the jre to whatever you want to use
+
+
+To fix the following error:
+
+Caused by: org.xml.sax.SAXParseException: cvc-complex-type.2.4.c:
+The matching wildcard is strict, but no declaration can be found for element 'amq:broker'. 
+
+You must associate the ActiveMQ XSD URL with the schema.
+
+Go to XML->XML Catalog in Preferences, and add a User Specified Entry.
+
+Location: http://activemq.apache.org/schema/core/activemq-core-5.3.0.xsd
+Key Type: Namespace Name
+Key: http://activemq.apache.org/schema/core
+
+Then add a second one:
+
+Location: http://activemq.apache.org/schema/core/activemq-core-5.3.0.xsd
+Key Type: Schema Location
+Key: http://activemq.apache.org/schema/core/activemq-core.xsd
+
+Hit OK.
+
+For more info: http://stackoverflow.com/questions/2289532/tomcat-understands-amqbroker-but-eclipse-marks-errors-in-schema
